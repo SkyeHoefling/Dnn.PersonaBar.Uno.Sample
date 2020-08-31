@@ -18,11 +18,11 @@
     <UpToDateCheckInput Include="..\Dnn.PersonaBar.Uno.Shared\**\*.xaml" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="WasmScripts\Andrew.js" />
+    <None Remove="WasmScripts\dnnInterop.js" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="WasmCSS\Fonts.css" />
-    <EmbeddedResource Include="WasmScripts\Andrew.js" />
+    <EmbeddedResource Include="WasmScripts\dnnInterop.js" />
     <EmbeddedResource Include="WasmScripts\AppManifest.js" />
   </ItemGroup>
   <ItemGroup>

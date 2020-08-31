@@ -22,6 +22,8 @@ namespace Dnn.PersonaBar.Uno.WebApi.Controllers
     [MenuPermission(Scope = ServiceScope.Host)]
     public class WasmController : PersonaBarApiController
     {
+        const string WasmPath = "~/DesktopModules/Admin/Dnn.PersonaBar/Dnn.PersonaBar.Uno/dist";
+
         public WasmController()
         {
         }
@@ -31,6 +33,8 @@ namespace Dnn.PersonaBar.Uno.WebApi.Controllers
         [RequireHost]
         public HttpResponseMessage Html()
         {
+
+
             return new HttpResponseMessage(HttpStatusCode.OK);
         }
 
