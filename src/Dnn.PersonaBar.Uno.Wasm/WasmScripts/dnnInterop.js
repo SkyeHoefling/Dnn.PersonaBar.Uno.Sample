@@ -1,7 +1,7 @@
-﻿function getDnn() {
+﻿function DnnInterop() {
     var model = {
-        tabId: '{0}',
-        requestVerificationToken: '{1}',
+        tabId: 5,
+        requestVerificationToken: '_2389hevfdsauh234g34',
     };
 
     return JSON.stringify(model);
