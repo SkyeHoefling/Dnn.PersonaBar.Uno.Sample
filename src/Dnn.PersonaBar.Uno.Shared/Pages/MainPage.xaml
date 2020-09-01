@@ -9,8 +9,20 @@
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <TextBlock Text="Dnn Persona Bar Module Sample" FontSize="30" HorizontalAlignment="Center" />
         <StackPanel Orientation="Horizontal">
-            <TextBlock Text="Tab ID:" FontWeight="Bold" />
-            <TextBlock Text="{Binding TabId}" />
+            <TextBlock Text="IsAdmin:" FontWeight="Bold" />
+            <TextBlock Text="{Binding IsAdmin}" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="IsHost:" FontWeight="Bold" />
+            <TextBlock Text="{Binding IsHost}" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="User ID:" FontWeight="Bold" />
+            <TextBlock Text="{Binding UserId}" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Portal ID:" FontWeight="Bold" />
+            <TextBlock Text="{Binding PortalId}" />
         </StackPanel>
         <StackPanel Orientation="Horizontal">
             <TextBlock Text="Request Verification Token:" FontWeight="Bold" />

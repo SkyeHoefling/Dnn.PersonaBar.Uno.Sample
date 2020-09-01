@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 using Uno.Foundation;
 
 namespace Dnn.PersonaBar.Uno.Shared.ViewModels
@@ -9,25 +10,44 @@ namespace Dnn.PersonaBar.Uno.Shared.ViewModels
         {
 #if __WASM__
             var json = WebAssemblyRuntime.InvokeJS("DnnInterop()");
-            var credentials = JsonConvert.DeserializeObject<Credentials>(json);
+            try
+            {
+                var settings = JsonConvert.DeserializeObject<PersonaBarSettings>(json);
 
-            TabId = credentials.TabId;
-            RequestVerificationToken = credentials.RequestVerificationToken;
+                IsHost = settings.IsHost;
+                IsAdmin = settings.IsAdmin;
+                UserId = settings.UserId;
+                PortalId = settings.PortalId;
+                RequestVerificationToken = settings.RequestVerificationToken;
+            }
+            catch (Exception) { }
 #else
-            TabId = -1;
+            PortalId = -1;
             RequestVerificationToken = "INVALID TOKEN";
 #endif
         }
 
-        public int TabId { get; }
+        public bool IsHost { get; }
+        public bool IsAdmin { get; }
+        public int UserId { get; }
+        public int PortalId { get; }
         public string RequestVerificationToken { get; }
     }
 
     [JsonObject]
-    public class Credentials
+    public class PersonaBarSettings
     {
-        [JsonProperty("tabId")]
-        public int TabId { get; set; }
+        [JsonProperty("isHost")]
+        public bool IsHost { get; set; }
+
+        [JsonProperty("isAdmin")]
+        public bool IsAdmin { get; set; }
+
+        [JsonProperty("userId")]
+        public int UserId { get; set; }
+
+        [JsonProperty("portalId")]
+        public int PortalId { get; set; }
 
         [JsonProperty("requestVerificationToken")]
         public string RequestVerificationToken { get; set; }
