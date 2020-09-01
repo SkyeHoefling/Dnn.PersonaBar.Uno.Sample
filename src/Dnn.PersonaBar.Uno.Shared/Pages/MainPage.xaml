@@ -6,27 +6,41 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock Text="Dnn Persona Bar Module Sample" FontSize="30" HorizontalAlignment="Center" />
-        <StackPanel Orientation="Horizontal">
-            <TextBlock Text="IsAdmin:" FontWeight="Bold" />
-            <TextBlock Text="{Binding IsAdmin}" />
-        </StackPanel>
-        <StackPanel Orientation="Horizontal">
-            <TextBlock Text="IsHost:" FontWeight="Bold" />
-            <TextBlock Text="{Binding IsHost}" />
-        </StackPanel>
-        <StackPanel Orientation="Horizontal">
-            <TextBlock Text="User ID:" FontWeight="Bold" />
-            <TextBlock Text="{Binding UserId}" />
-        </StackPanel>
-        <StackPanel Orientation="Horizontal">
-            <TextBlock Text="Portal ID:" FontWeight="Bold" />
-            <TextBlock Text="{Binding PortalId}" />
-        </StackPanel>
-        <StackPanel Orientation="Horizontal">
-            <TextBlock Text="Request Verification Token:" FontWeight="Bold" />
-            <TextBlock Text="{Binding RequestVerificationToken}" />
-        </StackPanel>
-    </StackPanel>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="Security" FontWeight="500" FontSize="32" FontFamily="roboto,arial" Margin="28,30"  />
+        <Grid Grid.Row="1" Background="#c8c8c8" Height="1" />
+        <Grid Grid.Row="2" Background="#fafafa" VerticalAlignment="Stretch" Padding="25,30">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" VerticalAlignment="Stretch" BorderBrush="#c8c8c8" BorderThickness="1" Background="#E5E7E6">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Padding="25, 30" Background="White">
+                        <TextBlock Text="Login Settings" FontWeight="500" FontSize="16" FontFamily="roboto,arial" VerticalAlignment="Center" HorizontalAlignment="Center" />    
+                    </StackPanel>
+                    <StackPanel Padding="25, 30">
+                        <TextBlock Text="Member Accounts" FontWeight="500" FontSize="16" FontFamily="roboto,arial" />
+                    </StackPanel>
+                    <StackPanel Padding="25, 30">
+                        <TextBlock Text="Member Accounts" FontWeight="500" FontSize="16" FontFamily="roboto,arial" />
+                    </StackPanel>
+                    <StackPanel Padding="25, 30">
+                        <TextBlock Text="Security Analyzer" FontWeight="500" FontSize="16" FontFamily="roboto,arial" />
+                    </StackPanel>
+                    <StackPanel Padding="25, 30">
+                        <TextBlock Text="Security Bulletins" FontWeight="500" FontSize="16" FontFamily="roboto,arial" />
+                    </StackPanel>
+                    <StackPanel Padding="25, 30">
+                        <TextBlock Text="More" FontWeight="500" FontSize="16" FontFamily="roboto,arial" />
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
 </Page>

@@ -1,21 +1,17 @@
-﻿using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
+﻿using System;
+using Dnn.PersonaBar.Uno.Pages;
+using Dnn.PersonaBar.Uno.Shared.Models;
+using Microsoft.Extensions.Logging;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using Dnn.PersonaBar.Uno.Pages;
+
+#if __WASM__
+using Newtonsoft.Json;
+using Uno.Foundation;
+#endif
 
 namespace Dnn.PersonaBar.Uno
 {
@@ -24,6 +20,7 @@ namespace Dnn.PersonaBar.Uno
     /// </summary>
     sealed partial class App : Application
     {
+        public static PersonaBarSettings PersonaBarSettings { get; private set; }
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -31,9 +28,27 @@ namespace Dnn.PersonaBar.Uno
         public App()
         {
             ConfigureFilters(global::Uno.Extensions.LogExtensionPoint.AmbientLoggerFactory);
+            LoadPersonaBarSettings();
 
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+        }
+
+        void LoadPersonaBarSettings()
+        {
+            PersonaBarSettings = new PersonaBarSettings
+            {
+
+            };
+
+#if __WASM__
+            var json = WebAssemblyRuntime.InvokeJS("DnnInterop()");
+            try
+            {
+                PersonaBarSettings = JsonConvert.DeserializeObject<PersonaBarSettings>(json);
+            }
+            catch (Exception) { }
+#endif
         }
 
         /// <summary>
