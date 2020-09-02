@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using Dnn.PersonaBar.Uno.Shared.Models;
+using Newtonsoft.Json;
 
 #if __WASM__
 using Uno.UI.Wasm;
@@ -34,9 +36,20 @@ namespace Dnn.PersonaBar.Uno.Shared.Services
             return string.Empty;
         }
 
-        public string UpdateSetting(string value)
+        public async Task<string> UpdateSetting(string value)
         {
-            throw new NotImplementedException();
+            var model = new ModuleSetting
+            {
+                Value = value
+            };
+            var json = JsonConvert.SerializeObject(model);
+            var jsonContent = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var respnse = await _httpClient.PostAsync("Home/Update", jsonContent);
+            if (respnse.IsSuccessStatusCode)
+                return await respnse.Content.ReadAsStringAsync();
+
+            return string.Empty;
         }
     }
 }

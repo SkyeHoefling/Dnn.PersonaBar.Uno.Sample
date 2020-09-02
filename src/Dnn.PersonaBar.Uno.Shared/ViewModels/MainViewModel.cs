@@ -1,6 +1,8 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using Dnn.PersonaBar.Uno.Shared.Common;
 using Dnn.PersonaBar.Uno.Shared.Services;
 
 namespace Dnn.PersonaBar.Uno.Shared.ViewModels
@@ -9,6 +11,8 @@ namespace Dnn.PersonaBar.Uno.Shared.ViewModels
     {
         public MainViewModel()
         {
+            Save = new RelayCommand(async () => await OnSave());
+
             // Typically in MVVM you would invoke this from
             // the thread that initializes the View Model.
             // For our sample it is okay to invoke the Async
@@ -16,7 +20,12 @@ namespace Dnn.PersonaBar.Uno.Shared.ViewModels
             InitializeAsync();
         }
 
+        [Bindable(true)]
+        public ICommand Save { get; }
+
         private string _setting;
+
+        [Bindable(true)]
         public string Setting
         {
             get => _setting;
@@ -30,11 +39,17 @@ namespace Dnn.PersonaBar.Uno.Shared.ViewModels
             }
         }
 
-        private async Task InitializeAsync()
+        async Task OnSave()
         {
             var service = new DnnService();
-            var data = await service.GetSettingAsync();
-            Setting = data;
+            Setting = await service.UpdateSetting(Setting);
+
+        }
+
+        async Task InitializeAsync()
+        {
+            var service = new DnnService();
+            Setting = await service.GetSettingAsync();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

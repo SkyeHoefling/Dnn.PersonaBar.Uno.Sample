@@ -85,7 +85,7 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="10">
                         <Button Content="Cancel" Style="{StaticResource Secondary}" />
-                        <Button Content="Save" Style="{StaticResource Primary}">
+                        <Button Content="Save" Style="{StaticResource Primary}" Command="{Binding Save}">
                             <Button.Resources>
                                 <ResourceDictionary>
                                     <ResourceDictionary.ThemeDictionaries>
