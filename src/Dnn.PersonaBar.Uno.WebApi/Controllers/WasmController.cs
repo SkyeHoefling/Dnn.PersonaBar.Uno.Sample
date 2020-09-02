@@ -51,8 +51,9 @@ namespace Dnn.PersonaBar.Uno.WebApi.Controllers
 
         [HttpGet]
         //[ValidateAntiForgeryToken]
-        [RequireHost]
-        public HttpResponseMessage ClientResource(string packageId, string file)
+        //[RequireHost]
+        [AllowAnonymous]
+        public HttpResponseMessage ClientResource(string packageId, string file, string extension)
         {
             return new HttpResponseMessage(HttpStatusCode.OK);
         }

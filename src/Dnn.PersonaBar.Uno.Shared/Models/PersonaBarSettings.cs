@@ -19,5 +19,8 @@ namespace Dnn.PersonaBar.Uno.Shared.Models
 
         [JsonProperty("requestVerificationToken")]
         public string RequestVerificationToken { get; set; }
+
+        [JsonProperty("apiRoute")]
+        public string ApiRoute { get; set; }
     }
 }

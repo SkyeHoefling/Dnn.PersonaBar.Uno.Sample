@@ -20,7 +20,7 @@ namespace Dnn.PersonaBar.Uno
     /// </summary>
     sealed partial class App : Application
     {
-        public static PersonaBarSettings PersonaBarSettings { get; private set; }
+        public PersonaBarSettings PersonaBarSettings { get; private set; }
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -42,10 +42,12 @@ namespace Dnn.PersonaBar.Uno
             };
 
 #if __WASM__
+            var host = WebAssemblyRuntime.InvokeJS("DnnGetHost()");
             var json = WebAssemblyRuntime.InvokeJS("DnnInterop()");
             try
             {
                 PersonaBarSettings = JsonConvert.DeserializeObject<PersonaBarSettings>(json);
+                PersonaBarSettings.ApiRoute = $"{host}/api/personabar/UnoSample/";
             }
             catch (Exception) { }
 #endif

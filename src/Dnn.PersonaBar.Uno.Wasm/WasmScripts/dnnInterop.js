@@ -11,3 +11,7 @@
 
     return JSON.stringify(model);
 }
+
+function DnnGetHost() {
+    return window.location.origin;
+}

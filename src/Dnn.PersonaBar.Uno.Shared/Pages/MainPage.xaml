@@ -81,7 +81,7 @@
                                 <TextBlock Text="i" FontWeight="Bold" FontFamily="roboto,arial" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" />
                             </Grid>
                         </StackPanel>
-                        <TextBox BorderBrush="#21a3da" BorderThickness="1" />
+                        <TextBox BorderBrush="#21a3da" BorderThickness="1" Text="{Binding Setting}" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="10">
                         <Button Content="Cancel" Style="{StaticResource Secondary}" />

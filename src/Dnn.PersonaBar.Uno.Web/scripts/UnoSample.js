@@ -6,6 +6,7 @@ define(
             init: function (wrapper, util, params, callback) {
                 var personaBarSettings = window.parent['personaBarSettings'];
                 var token = window.parent.document.getElementsByName('__RequestVerificationToken')[0];
+                var host = window.location.protocol.concat('//').concat(window.location.hostname);
 
                 var unoFrame = document.getElementById('uno-frame');
                 if (unoFrame !== null) {
