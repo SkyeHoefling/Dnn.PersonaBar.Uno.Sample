@@ -12,32 +12,63 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Text="Security" FontWeight="500" FontSize="32" FontFamily="roboto,arial" Margin="28,30"  />
+        <TextBlock Grid.Row="0" Text="Uno Platform Sample" FontWeight="500" FontSize="32" FontFamily="roboto,arial" Margin="28,30"  />
         <Grid Grid.Row="1" Background="#c8c8c8" Height="1" />
         <Grid Grid.Row="2" Background="#fafafa" VerticalAlignment="Stretch" Padding="25,30">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0" VerticalAlignment="Stretch" BorderBrush="#c8c8c8" BorderThickness="1" Background="#E5E7E6">
-                <StackPanel Orientation="Horizontal">
-                    <StackPanel Padding="25, 30" Background="White">
-                        <TextBlock Text="Login Settings" FontWeight="500" FontSize="16" FontFamily="roboto,arial" VerticalAlignment="Center" HorizontalAlignment="Center" />    
+            <Grid Grid.Row="0" BorderBrush="#c8c8c8" BorderThickness="1" Background="#E5E7E6">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0" Orientation="Horizontal">
+                    <StackPanel Padding="25, 15" Background="White">
+                        <TextBlock Text="Settings" FontWeight="600" FontSize="16" FontFamily="roboto,arial" VerticalAlignment="Center" HorizontalAlignment="Center" />    
                     </StackPanel>
-                    <StackPanel Padding="25, 30">
-                        <TextBlock Text="Member Accounts" FontWeight="500" FontSize="16" FontFamily="roboto,arial" />
+                    
+                </StackPanel>
+                <StackPanel Grid.Row="1" Background="White" Padding="20" Spacing="20">
+                    <TextBlock TextWrapping="WrapWholeWords" Text="Welcome to the Dnn Persona Bar Sample built using Uno Platform App. This sample demostrates a basic admin control that updates the PortalSetting table in the database." />
+                    <StackPanel Spacing="10">
+                        <StackPanel Orientation="Horizontal" Spacing="10">
+                            <TextBlock Text="Secret Message" FontWeight="600" FontFamily="roboto,arial" FontSize="14" />
+                            <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Ellipse Stroke="#C8C8C8" Fill="#c8c8c8" Height="15" Width="15" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                <TextBlock Text="i" FontWeight="Bold" FontFamily="roboto,arial" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" />
+                            </Grid>
+                        </StackPanel>
+                        <TextBox />
                     </StackPanel>
-                    <StackPanel Padding="25, 30">
-                        <TextBlock Text="Member Accounts" FontWeight="500" FontSize="16" FontFamily="roboto,arial" />
-                    </StackPanel>
-                    <StackPanel Padding="25, 30">
-                        <TextBlock Text="Security Analyzer" FontWeight="500" FontSize="16" FontFamily="roboto,arial" />
-                    </StackPanel>
-                    <StackPanel Padding="25, 30">
-                        <TextBlock Text="Security Bulletins" FontWeight="500" FontSize="16" FontFamily="roboto,arial" />
-                    </StackPanel>
-                    <StackPanel Padding="25, 30">
-                        <TextBlock Text="More" FontWeight="500" FontSize="16" FontFamily="roboto,arial" />
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="10">
+                        <Button Content="Cancel" Background="White" BorderBrush="#1E88C3" BorderThickness="1" Foreground="#1E88C3" CornerRadius="2" />
+                        <Button Content="Save" Background="#1E88C3" BorderThickness="0" Foreground="White" CornerRadius="2">
+                            <Button.Resources>
+                                <ResourceDictionary>
+                                    <ResourceDictionary.ThemeDictionaries>
+                                        <ResourceDictionary x:Key="Dark">
+                                            <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="White"/>
+                                            <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#21a3da"/>
+                                            <SolidColorBrush x:Key="ButtonBorderBrushPointerOver" Color="#21a3da" />
+                                        </ResourceDictionary>
+                                        <ResourceDictionary x:Key="Light">
+                                            <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="White"/>
+                                            <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#21a3da"/>
+                                        </ResourceDictionary>
+                                    </ResourceDictionary.ThemeDictionaries>
+                                </ResourceDictionary>
+                            </Button.Resources>
+                            <!--<VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="PointerOver">
+                                        <VisualState.Setters>
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>-->
+                        </Button>
                     </StackPanel>
                 </StackPanel>
             </Grid>
