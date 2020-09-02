@@ -6,3 +6,5 @@ Currently this sample project is a proof of concept and there are several manual
 - [Dnn Persona Bar Component Using Uno Platform](https://www.andrewhoefling.com/Blog/Post/dnn-persona-bar-component-using-uno-platform)
 
 # Screenshot
+![Module Screenshot](./images/screenshot-1.JPG)
+![Menu Screenshot](./images/screenshot-2.JPG)
