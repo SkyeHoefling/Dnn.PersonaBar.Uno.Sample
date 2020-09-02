@@ -12,6 +12,7 @@ namespace Dnn.PersonaBar.Uno.Shared.ViewModels
         public MainViewModel()
         {
             Save = new RelayCommand(async () => await OnSave());
+            Cancel = new RelayCommand(async () => await OnCancel());
 
             // Typically in MVVM you would invoke this from
             // the thread that initializes the View Model.
@@ -20,12 +21,11 @@ namespace Dnn.PersonaBar.Uno.Shared.ViewModels
             InitializeAsync();
         }
 
-        [Bindable(true)]
         public ICommand Save { get; }
+        public ICommand Cancel { get; }
 
         private string _setting;
 
-        [Bindable(true)]
         public string Setting
         {
             get => _setting;
@@ -43,8 +43,9 @@ namespace Dnn.PersonaBar.Uno.Shared.ViewModels
         {
             var service = new DnnService();
             Setting = await service.UpdateSetting(Setting);
-
         }
+
+        Task OnCancel() => InitializeAsync();
 
         async Task InitializeAsync()
         {
