@@ -31,6 +31,7 @@
             <Style TargetType="Button" x:Key="StandardButton">
                 <Setter Property="CornerRadius" Value="2" />
                 <Setter Property="winuiext:Mouse.Cursor" Value="Hand" />
+                <Setter Property="Padding" Value="25, 8" />
             </Style>
             <Style TargetType="Button" x:Key="Primary" BasedOn="{StaticResource StandardButton}">
                 <Setter Property="Background" Value="#1E88C3" />
