@@ -4,15 +4,55 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:winuiext="using:Microsoft.Toolkit.Uwp.UI.Extensions"
     mc:Ignorable="d">
 
+    <Page.Resources>
+        <ResourceDictionary>
+
+            <Style TargetType="TextBlock" x:Key="StandardTextBlock">
+                <Setter Property="FontFamily" Value="roboto,arial" />
+                <Setter Property="TextWrapping" Value="WrapWholeWords" />
+            </Style>
+            <Style TargetType="TextBlock" x:Key="Title" BasedOn="{StaticResource StandardTextBlock}">
+                <Setter Property="FontWeight" Value="500" />
+                <Setter Property="FontSize" Value="32" />
+            </Style>
+            <Style TargetType="TextBlock" x:Key="Heading" BasedOn="{StaticResource StandardTextBlock}">
+                <Setter Property="FontWeight" Value="600" />
+                <Setter Property="FontSize" Value="16" />
+            </Style>
+
+            <Style TargetType="TextBlock" x:Key="Label" BasedOn="{StaticResource StandardTextBlock}">
+                <Setter Property="FontWeight" Value="600" />
+                <Setter Property="FontSize" Value="14" />
+            </Style>
+            
+            <Style TargetType="Button" x:Key="StandardButton">
+                <Setter Property="CornerRadius" Value="2" />
+                <Setter Property="winuiext:Mouse.Cursor" Value="Hand" />
+            </Style>
+            <Style TargetType="Button" x:Key="Primary" BasedOn="{StaticResource StandardButton}">
+                <Setter Property="Background" Value="#1E88C3" />
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="BorderThickness" Value="0" />
+            </Style>
+            <Style TargetType="Button" x:Key="Secondary" BasedOn="{StaticResource StandardButton}">
+                <Setter Property="Background" Value="White" />
+                <Setter Property="Foreground" Value="#1E88C3" />
+                <Setter Property="BorderBrush" Value="#1E88C3" />
+                <Setter Property="BorderThickness" Value="1" />
+            </Style>
+        </ResourceDictionary>
+    </Page.Resources>
+    
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Text="Uno Platform Sample" FontWeight="500" FontSize="32" FontFamily="roboto,arial" Margin="28,30"  />
+        <TextBlock Grid.Row="0" Text="Uno Platform Sample" Style="{StaticResource Title}" Margin="28,30"  />
         <Grid Grid.Row="1" Background="#c8c8c8" Height="1" />
         <Grid Grid.Row="2" Background="#fafafa" VerticalAlignment="Stretch" Padding="25,30">
             <Grid.RowDefinitions>
@@ -26,25 +66,25 @@
                 </Grid.RowDefinitions>
                 <StackPanel Grid.Row="0" Orientation="Horizontal">
                     <StackPanel Padding="25, 15" Background="White">
-                        <TextBlock Text="Settings" FontWeight="600" FontSize="16" FontFamily="roboto,arial" VerticalAlignment="Center" HorizontalAlignment="Center" />    
+                        <TextBlock Text="Settings" Style="{StaticResource Heading}" VerticalAlignment="Center" HorizontalAlignment="Center" />    
                     </StackPanel>
                     
                 </StackPanel>
                 <StackPanel Grid.Row="1" Background="White" Padding="20" Spacing="20">
-                    <TextBlock TextWrapping="WrapWholeWords" Text="Welcome to the Dnn Persona Bar Sample built using Uno Platform App. This sample demostrates a basic admin control that updates the PortalSetting table in the database." />
+                    <TextBlock Style="{StaticResource StandardTextBlock}" Text="Welcome to the Dnn Persona Bar Sample built using Uno Platform App. This sample demostrates a basic admin control that updates the PortalSetting table in the database." />
                     <StackPanel Spacing="10">
                         <StackPanel Orientation="Horizontal" Spacing="10">
-                            <TextBlock Text="Secret Message" FontWeight="600" FontFamily="roboto,arial" FontSize="14" />
+                            <TextBlock Text="Secret Message" Style="{StaticResource Label}" />
                             <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
                                 <Ellipse Stroke="#C8C8C8" Fill="#c8c8c8" Height="15" Width="15" VerticalAlignment="Center" HorizontalAlignment="Center" />
                                 <TextBlock Text="i" FontWeight="Bold" FontFamily="roboto,arial" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" />
                             </Grid>
                         </StackPanel>
-                        <TextBox />
+                        <TextBox BorderBrush="#21a3da" BorderThickness="1" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="10">
-                        <Button Content="Cancel" Background="White" BorderBrush="#1E88C3" BorderThickness="1" Foreground="#1E88C3" CornerRadius="2" />
-                        <Button Content="Save" Background="#1E88C3" BorderThickness="0" Foreground="White" CornerRadius="2">
+                        <Button Content="Cancel" Style="{StaticResource Secondary}" />
+                        <Button Content="Save" Style="{StaticResource Primary}">
                             <Button.Resources>
                                 <ResourceDictionary>
                                     <ResourceDictionary.ThemeDictionaries>
@@ -60,14 +100,6 @@
                                     </ResourceDictionary.ThemeDictionaries>
                                 </ResourceDictionary>
                             </Button.Resources>
-                            <!--<VisualStateManager.VisualStateGroups>
-                                <VisualStateGroup x:Name="CommonStates">
-                                    <VisualState x:Name="PointerOver">
-                                        <VisualState.Setters>
-                                        </VisualState.Setters>
-                                    </VisualState>
-                                </VisualStateGroup>
-                            </VisualStateManager.VisualStateGroups>-->
                         </Button>
                     </StackPanel>
                 </StackPanel>
