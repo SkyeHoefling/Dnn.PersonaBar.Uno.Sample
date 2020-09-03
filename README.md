@@ -1,3 +1,6 @@
+**This project is an experiment and is not currently recommended for building DNN Persona Bar Modules**
+The goal of the project is to give definititive advice if this can be used securely, but right now it is just an experiment. Use the code here at your own risk.
+
 # Uno Platform Dnn Persona Bar Module Sample
 This is a sample project for integrating Uno Platform's WASM (Web Assembly) target as Dnn (Formerly DotNetNuke) Persona Bar Module.
 
@@ -23,3 +26,8 @@ I plan to put together a cake build script for this project that will create a D
 # Screenshot
 ![Module Screenshot](./images/screenshot-1.JPG)
 ![Menu Screenshot](./images/screenshot-2.JPG)
+
+# Created By Andrew Hoefling
+This sample was created by [Andrew Hoefling](https://github.com/ahoefling)
+- Twitter: [@andrew_hoefling](https://twitter.com/andrew_hoefling)
+- Website: [andrewhoefling.com](https://www.andrewhoefling.com/)
