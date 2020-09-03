@@ -1,12 +1,19 @@
-﻿function DnnInterop() {
-    var urlParams = new URLSearchParams(window.location.search);
+﻿function DnnGetSettings() {
+    var rootDnnWindow = window.parent.parent;
+    if (rootDnnWindow === undefined || rootDnnWindow === null) {
+        console.log('Unable to retrieve Persona Bar Settings!');
+        return {};
+    }
+
+    var personaBarSettings = rootDnnWindow['personaBarSettings'];
+    var tokenInput = rootDnnWindow.document.getElementsByName('__RequestVerificationToken')[0];
 
     var model = {
-        isHost: urlParams.get('isHost'),
-        isAdmin: urlParams.get('isAdmin'),
-        userId: urlParams.get('userId'),
-        portalId: urlParams.get('portalId'),
-        requestVerificationToken: urlParams.get('requestVerificationToken')
+        isHost: personaBarSettings.isHost,
+        isAdmin: personaBarSettings.isAdmin,
+        userId: personaBarSettings.userId,
+        portalId: personaBarSettings.portalId,
+        requestVerificationToken: tokenInput.value
     };
 
     return JSON.stringify(model);

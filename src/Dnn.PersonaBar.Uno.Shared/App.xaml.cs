@@ -43,7 +43,7 @@ namespace Dnn.PersonaBar.Uno
 
 #if __WASM__
             var host = WebAssemblyRuntime.InvokeJS("DnnGetHost()");
-            var json = WebAssemblyRuntime.InvokeJS("DnnInterop()");
+            var json = WebAssemblyRuntime.InvokeJS("DnnGetSettings()");
             try
             {
                 PersonaBarSettings = JsonConvert.DeserializeObject<PersonaBarSettings>(json);
