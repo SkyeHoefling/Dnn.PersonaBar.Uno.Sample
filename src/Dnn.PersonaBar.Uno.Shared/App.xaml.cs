@@ -94,7 +94,7 @@ namespace Dnn.PersonaBar.Uno
                 {
                     var service = new DnnService();
                     bool isAuthorized = await service.Authorize();
-                    Type page = isAuthorized ? typeof(MainPage) : typeof(UnauthorizedPage);
+                    Type page = typeof(MainPage); //isAuthorized ? typeof(MainPage) : typeof(UnauthorizedPage);
 
                     // When the navigation stack isn't restored navigate to the first page,
                     // configuring the new page by passing required information as a navigation

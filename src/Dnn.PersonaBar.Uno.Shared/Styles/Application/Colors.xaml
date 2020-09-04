@@ -1,0 +1,13 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Dnn.PersonaBar.Uno.Styles.Application">
+
+    <Color x:Key="TitleBackground">#ffffff</Color>
+    <Color x:Key="PanelBackground">#fafafa</Color>
+    <Color x:Key="DarkPanelBackground">#c8c8c8</Color>
+
+    <Color x:Key="InputBorder">#21a3da</Color>
+    
+    
+</ResourceDictionary>
