@@ -2,10 +2,10 @@
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Dnn.PersonaBar.Uno.Shared.Common;
-using Dnn.PersonaBar.Uno.Shared.Services;
+using Dnn.PersonaBar.Uno.Common;
+using Dnn.PersonaBar.Uno.Services;
 
-namespace Dnn.PersonaBar.Uno.Shared.ViewModels
+namespace Dnn.PersonaBar.Uno.ViewModels
 {
     public class MainViewModel : INotifyPropertyChanged
     {

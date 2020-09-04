@@ -1,12 +1,14 @@
 ﻿using System;
-using Dnn.PersonaBar.Uno.Pages;
-using Dnn.PersonaBar.Uno.Shared.Models;
+using Dnn.PersonaBar.Uno.Views;
+using Dnn.PersonaBar.Uno.Models;
 using Microsoft.Extensions.Logging;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using Dnn.PersonaBar.Uno.Exceptions;
+using Dnn.PersonaBar.Uno.Services;
 
 #if __WASM__
 using Newtonsoft.Json;
@@ -36,21 +38,21 @@ namespace Dnn.PersonaBar.Uno
 
         void LoadPersonaBarSettings()
         {
-            PersonaBarSettings = new PersonaBarSettings
-            {
-
-            };
-
 #if __WASM__
             var host = WebAssemblyRuntime.InvokeJS("DnnGetHost()");
             var json = WebAssemblyRuntime.InvokeJS("DnnGetSettings()");
             try
             {
                 PersonaBarSettings = JsonConvert.DeserializeObject<PersonaBarSettings>(json);
-                PersonaBarSettings.ApiRoute = $"{host}/api/personabar/UnoSample/";
+                PersonaBarSettings.ApiRoute = string.Format(Constants.BaseRoute, host);
             }
             catch (Exception) { }
 #endif
+
+            if (PersonaBarSettings == null)
+            {
+                Console.WriteLine("Failed to connect to the DNN persona bar! Ensure you are using the Persona Bar to render this page.");
+            }
         }
 
         /// <summary>
@@ -58,7 +60,7 @@ namespace Dnn.PersonaBar.Uno
         /// will be used such as when the application is launched to open a specific file.
         /// </summary>
         /// <param name="e">Details about the launch request and process.</param>
-        protected override void OnLaunched(LaunchActivatedEventArgs e)
+        protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
 #if DEBUG
 			if (System.Diagnostics.Debugger.IsAttached)
@@ -90,10 +92,14 @@ namespace Dnn.PersonaBar.Uno
             {
                 if (rootFrame.Content == null)
                 {
+                    var service = new DnnService();
+                    bool isAuthorized = await service.Authorize();
+                    Type page = isAuthorized ? typeof(MainPage) : typeof(UnauthorizedPage);
+
                     // When the navigation stack isn't restored navigate to the first page,
                     // configuring the new page by passing required information as a navigation
                     // parameter
-                    rootFrame.Navigate(typeof(MainPage), e.Arguments);
+                    rootFrame.Navigate(page, e.Arguments);
                 }
                 // Ensure the current window is active
                 Windows.UI.Xaml.Window.Current.Activate();

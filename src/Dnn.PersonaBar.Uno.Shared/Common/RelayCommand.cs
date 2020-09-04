@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace Dnn.PersonaBar.Uno.Shared.Common
+namespace Dnn.PersonaBar.Uno.Common
 {
     //https://docs.microsoft.com/en-us/uwp/api/Windows.UI.Xaml.Input.ICommand?view=winrt-19041
 

@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Dnn.PersonaBar.Uno.Shared.Models
+namespace Dnn.PersonaBar.Uno.Models
 {
     [JsonObject]
     public class PersonaBarSettings

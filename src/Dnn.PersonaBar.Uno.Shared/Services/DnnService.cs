@@ -2,14 +2,14 @@
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using Dnn.PersonaBar.Uno.Shared.Models;
+using Dnn.PersonaBar.Uno.Models;
 using Newtonsoft.Json;
 
 #if __WASM__
 using Uno.UI.Wasm;
 #endif
 
-namespace Dnn.PersonaBar.Uno.Shared.Services
+namespace Dnn.PersonaBar.Uno.Services
 {
     public class DnnService
     {
@@ -17,6 +17,9 @@ namespace Dnn.PersonaBar.Uno.Shared.Services
         readonly HttpClient _httpClient;
         public DnnService()
         {
+            if (Settings == null || string.IsNullOrEmpty(Settings.ApiRoute))
+                return;
+
 #if __WASM__
             var handler = new WasmHttpHandler();
             _httpClient = new HttpClient(handler);
@@ -29,7 +32,10 @@ namespace Dnn.PersonaBar.Uno.Shared.Services
 
         public async Task<string> GetSettingAsync()
         {
-            var response = await _httpClient.GetAsync("Home/Get");
+            if (_httpClient == null)
+                return string.Empty;
+
+            var response = await _httpClient.GetAsync(Constants.SettingGet);
             if (response.IsSuccessStatusCode)
                 return await response.Content.ReadAsStringAsync();
 
@@ -38,6 +44,9 @@ namespace Dnn.PersonaBar.Uno.Shared.Services
 
         public async Task<string> UpdateSetting(string value)
         {
+            if (_httpClient == null)
+                return string.Empty;
+
             var model = new ModuleSetting
             {
                 Value = value
@@ -45,11 +54,20 @@ namespace Dnn.PersonaBar.Uno.Shared.Services
             var json = JsonConvert.SerializeObject(model);
             var jsonContent = new StringContent(json, Encoding.UTF8, "application/json");
 
-            var respnse = await _httpClient.PostAsync("Home/Update", jsonContent);
+            var respnse = await _httpClient.PostAsync(Constants.SettingUpdate, jsonContent);
             if (respnse.IsSuccessStatusCode)
                 return await respnse.Content.ReadAsStringAsync();
 
             return string.Empty;
+        }
+
+        public async Task<bool> Authorize()
+        {
+            if (_httpClient == null)
+                return false;
+
+            var response = await _httpClient.GetAsync(Constants.Authorize);
+            return response.IsSuccessStatusCode;
         }
     }
 }
