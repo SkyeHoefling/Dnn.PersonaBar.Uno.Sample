@@ -7,5 +7,11 @@
         <Setter Property="Background" Value="White" />
         <Setter Property="Padding" Value="25, 15" />
     </Style>
+
+    <Style TargetType="StackPanel" x:Key="ButtonGroup">
+        <Setter Property="Orientation" Value="Horizontal" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="Spacing" Value="10" />
+    </Style>
     
 </ResourceDictionary>
