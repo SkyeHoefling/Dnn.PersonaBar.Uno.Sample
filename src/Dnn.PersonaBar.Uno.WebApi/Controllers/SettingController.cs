@@ -10,7 +10,7 @@ using DotNetNuke.Web.Api;
 namespace Dnn.PersonaBar.Uno.WebApi.Controllers
 {
     [MenuPermission(Scope = ServiceScope.Host)]
-    public class HomeController : PersonaBarApiController
+    public class SettingController : PersonaBarApiController
     {
         const string UnoSampleSetting = "UnoSample.Setting";
 

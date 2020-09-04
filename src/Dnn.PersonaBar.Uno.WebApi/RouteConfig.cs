@@ -8,6 +8,13 @@ namespace Dnn.PersonaBar.Uno.WebApi
         {
             mapRouteManager.MapHttpRoute(
                 "personabar/UnoSample",
+                "authorize-routes",
+                "Authorize",
+                new { controller = "authorize", action = "authorize" },
+                new[] { "Dnn.PersonaBar.Uno.WebApi.Controller" });
+
+            mapRouteManager.MapHttpRoute(
+                "personabar/UnoSample",
                 "default",
                 "{controller}/{action}",
                 new[] { "Dnn.PersonaBar.Uno.WebApi.Controllers" });
